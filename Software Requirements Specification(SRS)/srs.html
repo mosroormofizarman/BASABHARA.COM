@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRS</title>
+  <link rel="stylesheet" href="srs.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container">
+  <nav class="fixed-nav-bar">
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">☰</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#pic" onclick="w3_close()" class="w3-bar-item w3-button">Cover</a>
+      <a href="#tofcontent" onclick="w3_close()" class="w3-bar-item w3-button">Table of Content</a>
+      <a href="#intro" onclick="w3_close()" class="w3-bar-item w3-button">Introduction</a>
+      <a href="#overall" onclick="w3_close()" class="w3-bar-item w3-button">Overall Description</a>
+      <a href="#eir" onclick="w3_close()" class="w3-bar-item w3-button">External Interface Requirements</a>
+      <a href="#sfr" onclick="w3_close()" class="w3-bar-item w3-button">System Features</a>
+      <a href="#onfr" onclick="w3_close()" class="w3-bar-item w3-button">Other Non-Functional Requirements</a>
+      <a href="#onfr" onclick="w3_close()" class="w3-bar-item w3-button">Other Requirements</a>
+      <a href="#apd" onclick="w3_close()" class="w3-bar-item w3-button">Appendix A: Glossary</a>
+      <a href="#apd_analysis" onclick="w3_close()" class="w3-bar-item w3-button">Appendix B: Analysis Models</a>
+    </div>
+  </div>
+
+  <button id="btnPrint" onclick="window.print()">Print</button>
+  </nav>
+  <div class="text-center" style="padding:30px">
+    <img id="pic" src="Pictures/nsu.png" alt="NSU logo" >
+  </div>
+
+  <div class="w3-container w3-padding-32 w3-center">
+    <h1 href="#"> Software Requirements Specification</h1>
+    <h1 style="padding:0.01px">For</h1>
+    <h1 id="cover">'BASHABHARA.COM'</h1>
+  </div>
+    <p><br></p>
+    <p><br></p>
+    <!-- <p><br></p> -->
+    <p id="pre"><font size="5">Prepared By:</font></p>
+
+    <table class="table table-bordered" style="table-layout: fixed; width:60%; border:1px solid black; text-align:center;" align="center">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>ID</td>
+        </tr>
+        <tr>
+          <td>MD Yeasin Arafat</td>
+          <td>2022320642</td>
+        </tr>
+        <tr>
+          <td>Habibur Rahaman Fahim</td>
+          <td>1911753642</td>
+        </tr>
+        <tr>
+          <td>Mosroor Mofiz Arman</td>
+          <td>1921079642</td>
+        </tr>
+        <tr>
+          <td>Khadiza Akter Luna</td>
+          <td>1430452042</td>
+        </tr>
+      </tbody>
+    </table>
+  <p style="page-break-after:always"></p>
+
+    <p><br></p>
+    <p><br></p>
+
+    <h1 id="tofcontent" href="#"> Table of Content </h1><br>
+    <div  class="tofcontent">
+      <table style="width:100%">
+        <tr>
+          <td style="font-size:18px"><b>1. Introduction<b></th>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td style="font-size:14px">
+              -  Purpose <br>
+              -  Document Conventions <br>
+              -  Intended Audience and reading suggestions <br>
+              -  Product Scope <br>
+              -  References
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size:18px"><b>2. Overall Description<b></th>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td style="font-size:14px">
+            -  Product Perspective <br>
+            -  Product Functions<br>
+            -  User Classes and Characteristics <br>
+            -  Operating Environment <br>
+            -  Design and Implementation Constraints <br>
+            -  User Documentation
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size:18px"><b>3. External Interface Requirements<b></th>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td style="font-size:14px">
+            -  User Interfaces <br>
+            -  Hardware Interfaces<br>
+            -  Software Interfaces <br>
+            -  Communications Interfaces
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size:18px"><b>4. System Features<b></th>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td style="font-size:14px">
+            -  Description and Priority <br>
+            -  Stimulus/Response Sequences<br>
+            -  Functional Requirements<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size:18px"><b>5.Other NonFunctional Requirements<b></th>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td style="font-size:14px">
+            -  Performance Requirements <br>
+            -  Safety Requirements
+            -  Security Requirements<br>
+            -  Software Quality Attributes<br>
+            -  Notification Management <br>
+            -  System Management<br>
+            -  Document Digitization Services
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size:18px"><b>6. Other Requirements<b></th>
+          <td>10</td>
+        </tr>
+        
+        <tr>
+          <td style="font-size:18px"><b>Appendix A: Glossary<b></th>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td style="font-size:18px"><b>Appendix B: Analysis Models<b></th>
+          <td>11</td>
+        </tr>
+      </table>
+    </div>
+    <p style="page-break-after:always"></p>
+    <p><br></p>
+    <p><br></p>
+
+ <div class="w3-container w3-padding-32 w3-center">
+  <h1 id="intro" href="#"> 1. Introduction </h1><br>
+<h3>1.1 Purpose:</h3>
+<p>The software aims to give potential buyers and sellers of real estate a platform to transact in real estate purchases, sales, and rentals. Brokers typically assist buyers and sellers in finding the ideal buyer or seller for a property. Yet both the buyer and the seller must pay money. To avoid this expense, a software A remedy is required to assist folks. </p>
+<br><h3>1.2 Document Conventions:</h3>
+<p>For headlines, the font "Times New Roman" in size 14 is used, with font sizes 12 and 14 for paragraphs and descriptions, respectively, as well as for subheadings. The font "Cambria Math" is also used.</p>
+<br><h3>1.3 Intended Audience and Reading Suggestions:</h3>
+<p>The developer, users, project manager, front desk agent, and content writer can all benefit from this SRS document. The SRS paper includes all the conditions and advantages about the
+
+  project as well as the procedures that will aid in its development. </p>
+<br><h3>1.4 Product Scope:</h3>
+<p>The web and android app will make life easier for tenants and homeowners. Homeowners can post their homes for rent, and tenants can easily find houses within their budget.</p>
+<br><h3>1.5 References:</h3>
+  <p>
+    SRS IEEE standard format.
+  </p>
+
+  <p style="page-break-after:always"></p>
+  <p><br></p>
+  <p><br></p>
+  </div>
+  <br>
+
+  <div class="w3-container w3-padding-32 w3-center">
+  <h1 id="overall" href="#">2. Overall Description </h1><br>
+  <p>
+    <h3>2.1 Product Perspective:</h3>
+    <p>
+      This product is a rental house management system called "BASABHARA.COM." It is a part of the software engineering course assessment at North South University's Spring academic semester of 2023. The faculty member proposed the project idea while acting as a "client" with the student group members who performed the tasks as an imaginary software firm. The product is a new self-contained system that is neither a member of a product family nor a replacement for another system.
+    </p>
+    <p><br></p>
+
+    <h3>2.2 Product Functions:</h3>
+    <p>
+      
+
+      The functionality of the product includes:
+      <ul>
+        <li>Using the rental house management system eliminates the need for a third party to rent a house.</li>
+        <li>Users can search for houses in different areas and locations without traveling to the location.</li>
+        <li>Direct communication between the householders and renters of the house.</li>
+        <li>Clarifications can be done easily.</li>
+        <li>Saves time for both parties.</li>
+        <li>Multiple available houses and renters to choose from.</li>
+        
+      </ul>
+    </p>
+    <p><br></p>
+    <h3>2.3 User Classes and Characteristics:</h3>
+    <p>
+      The users of the application can be classified into two types. The ones who want to give a house for rent (house owners) and the ones who want to rent a house. There is no strict distinction between the two types of users. Both users can access all the functionality of the application.
+    </p>
+    <p style="page-break-after:always"></p>
+    <p><br></p>
+    <p><br></p>
+
+    <h3>2.4 Operating Environment:</h3>
+    <p>
+      The software will operate on web apps and android devices. The operating environment should have access to a microphone for voice recording. It is recommended not to use any old Android OS version and use a relatively modern web browser.
+    </p>
+    <p><br></p>
+    <h3>2.5 Design and Implementation Contraints:</h3>
+    <p>
+      Constraints include:
+      <ul>
+        <li>The time allotted for this project is, at most, six months.</li>
+        <li>The application's front end will be made using HTML, CSS, and JavaScript.</li>
+        <li>Python will be used as the language for the application's back-end, and PostgreSQL will be used for the application's database.</li>
+        <li>The website will be in the English language. Users who do not know English will need help using the website.</li>
+      </ul>
+    </p>
+    <p><br></p>
+    <h3>2.6 User Documentation:</h3>
+    <p>
+      The software comes with a user manual and a short video for non-technical individuals that explains "how to install and use the software."
+    </p>
+    <p><br></p>
+    <h3>2.7 Assumptions and Dependencies:</h3>
+    <p>
+      The software assumes that the user's devices will have access to the internet that can connect to the internet, have a google account, can use a web app and android app, and have access to necessary devices to use those interfaces. It is also assumed that the user has access to a microphone that can record voices. This software relies on APIs such as Google OAuth API and external ML speech-to-text APIs, So the software's one of the core differentiators relies on the external ML model's performance, and it is assumed that the ML model's performances are reasonable. The project could be affected if these dependencies are incorrect, are not shared, or are changed.
+    </p>
+    <p><br></p>
+    <p><br></p>
+  </p>
+  
+</div>
+
+<div class="w3-container w3-padding-32 w3-center">
+  <h1 id="eir" href="#"> 3. External Interface Requirements </h1><br>
+  <h3>3.1 User Interfaces</h3>
+  <p>There will be two types of users. One is householders, and the other is renters. Both the user also has two interfaces. One is "Command by typing," and the other is "Command by voice." In the first interface, the user will provide the command by keyboard; in the second interface, the user will give the command by voice recording through the device's microphone. After that, the user must fill up a registration form with a live captured photograph. In the mobile application, users can take their photos through the mobile camera. In the web application, users also use the mobile's camera through a web link which is provided by the system. After registration, the householders can post their house information with their house photos, and the renters can search for houses. The renters can also search ads from other third-party rental house management systems through this application. To make the search process easy for the renters, they can use their mobile cameras to scan a house and get all the information about that house that the householders provided. Therefore, all the processes can also be done by voice command.</p>
+  </ul><br>
+  <h3>3.2 Hardware Interfaces</h3>
+  <p>The primary hardware requirement for the system is a computer or a mobile phone. The system will require microphone permission to assign and give a voice command and an internet connection to call API.</p><br>
+  <h3>3.3 Software Interfaces</h3>
+  <p>This system will use ORM to map relational cardinalities. It will use a Speech-to-text machine learning model API to detect questions and answers for the voice command. This system will also use Google OAuth 2.0 to log in or register to the app with google.</p><br>
+  <h3>3.4 Communications Interfaces</h3>
+  <p>The system will use Restful API to connect the front-end with the back-end. This system uses OAuth 2.0 by Google for verification and token authentication to communicate between the front-end and back-end through API.</p>
+  <br>
+  <p style="page-break-after:always"></p>
+  <p><br></p>
+  <p><br></p>
+  </div>
+
+  <div class="w3-container w3-padding-32 w3-center">
+    <h1 id="sfr" href="#"> 4. System Features </h1><br>
+    <h3>4.1 Description and Priority:</h3>
+
+    <p><b>Description: </b>Users can Sign Up and Login from application or website from anywhere and anytime.</p>
+    <p><b>Priority:</b></p>
+    <br>
+    <p><b>Description: </b>Users get live GPS location to track down the location.</p>
+    <p><b>Priority:</b>Medium</p>
+    <br>
+    <p><b>Description: </b>Flat owners will have to upload a photo of their flat for advertisement.</p>
+    <p><b>Priority:</b>High</p>
+    <br>
+    <p><b>Description: </b>Messaging system between buyer and seller.</p>
+    <p><b>Priority:</b>High</p>
+    <br>
+    <p><b>Description: </b>All users can use voice commands to create accounts or publish advertisements.</p>
+    <p><b>Priority:</b>High</p>
+    <br>
+    
+    <h3>4.2 Stimulus/Response Sequences:</h3>
+    <p><b>Stimulus: </b>Admin logins with preferred ID and Password into the Admin Panel.</p>
+    <p><b>Response: </b>System provides all Real-Time User specifications to the Admin.</p>
+    <br>
+    <p><b>Stimulus: </b>User (Customer) Signs up and Login to the system using their email and other necessary information.</p>
+    <p><b>Response: </b>System provides flat advertisements and details to the User.</p>
+    <br>
+    <p><b>Stimulus: </b>User (Renter) Signs up and Login to the system with their information, also have to provide any photo of that advertisement.</p>
+    <p><b>Response: </b>System publish the advertisement into the website.</p>
+    <br>
+    <p><b>Stimulus: </b>User request for location to the system.</p>
+    <p><b>Response: </b>System provides live GPS location to track the location.</p>
+    <br>
+    <p><b>Stimulus: </b>When User can book flats from the system.</p>
+    <p><b>Response: </b>The system sends a notification to User (Customer), with GPS location.</p>
+    <br>
+    <p><b>Stimulus: </b>Renters can upload flat photo from anywhere via email.</p>
+    <p><b>Response: </b>The system adds the photo for the advertisement.</p>
+    <br>
+    
+   
+    <h3>4.3 Functional Requirements:</h3>
+    <table class="table table-bordered" style="table-layout: fixed; width:auto; border:1px solid black; text-align:center;" align="center">
+      <tbody>
+        <tr>
+          <th>FR IDs</th>
+          <th>Feature Name</th>
+          <th>Description</td>
+        </tr>
+        <tr>
+          <td>FR-1</td>
+          <td>User Authentication</td>
+          <td>Users can Sign up, Login and Reset Password if they want.</td>
+        </tr>
+        <tr>
+          <td>FR-2</td>
+          <td>Listing</td>
+          <td>Renters can publish their advertisement with necessary information, so that buyers can search them easily.</td>
+        </tr>
+        <tr>
+          <td>FR-3</td>
+          <td>Messaging</td>
+          <td>Interaction between buyers and sellers is important. They can communicate with each other through messaging system.</td>
+        </tr>
+        <tr>
+          <td>FR-4</td>
+          <td>Photo Upload</td>
+          <td>FR-4	Photo Upload	Flat owners need to upload their flat photos for advertisement.</td>
+        </tr>
+        <tr>
+          <td>FR-5</td>
+          <td>Voice Interaction</td>
+          <td>All users can fill up their necessary information or can search using voice interactions.</td>
+        </tr>
+        <tr>
+          <td>FR-6</td>
+          <td>GPS</td>
+          <td>Buyers should able to track down actual location via GPS.</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+    
+    <p style="page-break-after:always"></p>
+    <p><br></p>
+    <p><br></p>
+  </div>
+
+  <div class="w3-container w3-padding-32 w3-center">
+    <h1 id="onfr" href="#"> 5. Other Non-Functional Requirements </h1><br>
+
+      <h3>5.1 Performance Requirements</h3>
+      <p>All circumstances will be covered by the system. It will operate nonstop for the entire calendar year. Software would be ready when promised, preventing any disruption from happening. The system's structure will be chosen in accordance with the requirements. The system's user interface (UI) will be simple and easy to understand so that users won't have any trouble identifying the functions. The software package should have flawless operation across its whole feature set.
+     </p>
+      <br>
+
+      <h3>5.2 Safety Requirements</h3>
+      <p>When software crashes by default, the requirement should be used so that we have another option that still preserves data on multiple servers. Make sure you abide by international laws and rules when managing the hotel system, and get certified to ensure all safety requirements are met.
+     </p>
+      <br>
+
+      <h3>5.3 Security Requirements</h3>
+      <p>
+        To ensure the safety and security of the product's data, the system must be registered with the security-providing company and should be approved by a genuine identity. To protect the data from market hackers, a high level of network security should be implemented. Any legitimate accredited network security business, such as Fire Eye, should certify software.
+     </p>
+      <br>
+
+      <h3>5.4 Software Quality Attributes</h3>
+      <p>Software should be dependable and adaptable, meaning that it can be altered on demand by the client without any issues. It should operate smoothly and be quick to maintain. To save time and reduce complexity, the data structures should be built correctly, and design patterns should be used when appropriate. Maintaining a software's portability and designing it so that it can be utilized for upcoming projects and updates are both required.
+      </p>
+      <br>
+
+      <h3>5.5 Business Rules</h3>
+      <p>Users should be able to run software with a variety of individual privileges provided by the system.
+        Each function stands alone from the others. Each user's portal needs to be unique based on their rights.
+        
+      </p>
+      
+
+  </div>
+
+  <div class="w3-container w3-padding-32 w3-center">
+    <h1 id="overall" href="#">6. Other Requirements</h1><br>
+    
+      <p>
+        
+  
+        Here are some additional requirements relevant with the project.
+        <ul>
+          <li>Data Requirements.</li>
+          <li>Multi Language System.</li>
+          <li>Feedback.</li>
+          <li>Security.</li>
+          <li>Legal Requirements.</li>
+          
+        </ul>
+      </p>
+      
+    
+  </div>
+
+  <div class="w3-container w3-padding-32 w3-center">
+    <h1 id="apd" href="#"> Appendix A: Glossary </h1><br>
+
+   
+    <p><b>Customer: </b> Who looks for flat.</p>
+    <p><b>Flat Owner: </b> who advertise for flats for the customers.</p>
+    <p><b>Account: </b>Customer & Renters will have their own account.</p>
+    <p><b>Voice Commands: </b>Users can interact with system via voice command.</p>
+    <p><b>GPS: </b>Customers can find flat through GPS.</p>
+    <p><b>Photo Attachment: </b>Renters can add photo from anywhere anytime through email.</p>
+    
+   
+    <p><br></p>
+    <p style="page-break-after:always"></p>
+    <p><br></p>
+    <p><br></p>
+  </div>
+
+  <div class="w3-container w3-padding-32 w3-center">
+    <h1 id="apd_analysis" href="#"> Appendix B: Analysis Models </h1><br>
+    <h3>Use-Case Diagram:</h3>
+     <img src="Pictures\usecase_diagram.jpg" alt="usecase diagram" class="center2">
+  </div>
+  
+
+</div>
+
+    <script src = "srs.js"></script>
+</body>
+</html>
