@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ads Data</title>
+    <style>
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 10px;
+        }
+
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+
+        .image {
+            height: 100px;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ads Data</h1>
+    <div class="grid">
+        {% for image in images %}
+        <div class="box row column">
+            <img class="image" id="image{{ forloop.counter }}" src="{{ image }}" alt="Ad Image">
+            {% for ads_names in ads_names %}
+            {% if forloop.counter == forloop.parentloop.counter %}
+            <p>{{ ads_names }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% block scripts %}
+    <script>
+        {% for image in images %}
+            document.getElementById("image{{ forloop.counter }}").src = "{{ image }}";
+        {% endfor %}
+    </script>
+    {% endblock %}
+</body>
+</html>
+

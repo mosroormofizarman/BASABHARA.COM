@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Post Ad</title>
+    <link rel="stylesheet" href="{% static 'css/post_styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <form method="POST" action="{% url 'post' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Post Ad</h1>
+        <div class="post" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div style="flex: 1; margin-right: 20px;">
+                <label>
+                    <b>Ads Name:</b>
+                </label>
+                <input type="Text" name="Adsname" id="Adsname" placeholder="Ads name" minlength="10" required="required">
+                <button type="button" onclick="startDictation('Adsname')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Cost</b>
+                </label>
+                <input type="text" name="Cost" id="Cost" placeholder="Cost" required="required">
+                <button type="button" onclick="startDictation('Cost')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Upload Picture:</b>
+                </label>
+                <input style="color: white;
+                        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                        font-size: 20px"
+                       type="file" name="picture" accept=".jpg, .jpeg" required="required">
+                <br><br>
+            </div>
+            <div style="flex: 1; margin-left: 10px;">
+                <label>
+                    <b>Phone Number</b>
+                </label>
+                <input type="Number" name="Number" id="Number" placeholder="Phone number" min="11" required="required">
+                <button type="button" onclick="startDictation('Number')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Location:</b>
+                </label>
+                <select id="Location" name="Location" required="required">
+                    <option value="">Please select one area</option>
+                    <option value="Uttara">Uttara</option>
+                    <option value="Badda">Badda</option>
+                    <option value="Mirpur">Mirpur</option>
+                    <option value="Dhanmondi">Dhanmondi</option>
+                    <option value="Bashundhara">Bashundhara</option>
+                </select>
+                <br><br>
+                <label>
+
+                </label>
+                <br>
+                <input type="submit" id="signUp">
+            </div>
+        </div>
+        <div id="create-account-wrap">
+            <p>View Ads Now!&nbsp;<a style="color: yellow" href="{% url 'get_data:getdata' %}">Home</a><p>
+        </div>
+        {% if message %}
+        <script>
+    alert("{{ message }}");
+        </script>
+        {% endif %}
+
+        <!--<script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBa2p_ux3mmCgpBraYM82nuFkJsWAhqBFE",
+            authDomain: "authentication-2244f.firebaseapp.com",
+            databaseURL: "https://authentication-2244f-default-rtdb.firebaseio.com",
+            projectId: "authentication-2244f",
+            storageBucket: "authentication-2244f.appspot.com",
+            messagingSenderId: "1028544729603",
+            appId: "1:1028544729603:web:e4fe131fd5a22163a23436"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import { getDatabase, ref, get, set, child, update, remove }
+            from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+        const db = getDatabase();
+
+        var btn = document.getElementById("signUp");
+        btn.addEventListener('click', InsertData);
+        btn.addEventListener('click', signUp);
+
+        function InsertData() {
+            var username = document.getElementById("Uname").value;
+            var password = document.getElementById("Pass").value;
+            var email = document.getElementById("Mail").value;
+            var age = document.getElementById("Age").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var address = document.getElementById("Address").value;
+            var location = document.getElementById("Location").value;
+
+            set(ref(db, "Registered Users/" + document.getElementById("Uname").value), {
+                UserName: username,
+                Age: age,
+                Gender: gender,
+                Address: address,
+                Location: location
+            })
+                .then(() => {
+
+                    alert("Data Stored Successfully");
+                    window.location.href = "signup.html";
+                })
+                .catch(() => {
+                    alert("Data Stored Unsuccessful" + error);
+                })
+        }
+
+        function signUp() {
+
+            var email = document.getElementById("Mail").value;
+            var password = document.getElementById("Pass").value;
+
+            const auth = getAuth();
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+
+                    const user = userCredential.user;
+                    console.log("User registered successfully:", user);
+                })
+                .catch((error) => {
+
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error("User registration failed:", errorCode, errorMessage);
+
+                });
+
+        }
+
+        const auth = getAuth();
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+
+                var email = user.email;
+                alert("Active user " + email);
+
+            } else {
+                alert("No Active user Found")
+            }
+        })
+
+    </script>
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>-->
+        <script src="{% static 'js/post_script.js' %}"></script>
+    </form>
+</body>
+</html>

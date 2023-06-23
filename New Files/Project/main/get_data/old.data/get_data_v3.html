@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ads Data</title>
+    <style>
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 10px;
+        }
+
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+
+        .image {
+            height: 100px;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ads Data</h1>
+    <div class="grid">
+        {% for ad_detail in ad_details %}
+        <div class="box">
+            <h2>{{ ad_detail.name }}</h2>
+            <p>{{ ad_detail.location }}</p>
+            <p>{{ ad_detail.phone_number }}</p>
+            <p>{{ ad_detail.cost }}</p>
+            {% if ad_detail.images %}
+            <img class="image" src="data:image/jpeg;base64,{{ ad_detail.images.0 }}" />
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

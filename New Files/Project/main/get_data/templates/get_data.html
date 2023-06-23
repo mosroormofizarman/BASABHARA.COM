@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/get_data_styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>    
+    <h1 class="header">Home
+    <br>
+    <a style="color: yellow; font-size: 20px;" href="{% url 'post' %}">Post Ad Now!</a>
+    </h1>  
+    
+    <form class="form" method="GET" action="{% url 'get_data:getdata' %}">
+        <input class="form" type="text" name="search" id="search" placeholder="Search">
+        <button class="form" type="button" onclick="startDictation('search')"><i class="fa fa-microphone"></i></button>
+        <button class="form" type="submit">Search</button>
+    </form>
+    <div class="grid" style="margin-top: 10px;">
+        {% if ads %}
+            {% for images in images %}
+            <div class="box row column">
+                <div class="image-box">
+                    <img class="image" id="image{{ forloop.counter }}" src="{{ image }}" alt="Ad Image">
+                </div>
+                {% for ad in ads %}
+                    {% if forloop.counter == forloop.parentloop.counter %}
+                    <b><p>{{ ad.name }}</p></b>
+                    <p>{{ ad.location }}</p>
+                    <p>{{ ad.phone_number }}</p>
+                    <p>{{ ad.cost }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-data">No data found.</p>
+        {% endif %}
+    </div>
+
+    {% block scripts %}
+    <script>
+        {% for image in images %}
+            document.getElementById("image{{ forloop.counter }}").src = "{{ image }}";
+        {% endfor %}
+    </script>
+    {% endblock %}
+    <script src="{% static 'js/get_data_script.js' %}"></script>
+</body>
+</html>

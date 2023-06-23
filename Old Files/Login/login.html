@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    
+    <title>Login</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="login" style="text-align: center">
+
+        <label>
+            <b>
+                Email
+            </b>
+        </label>
+        <input type="Email" name="Mail" id="Mail" placeholder="Email" required="required">
+        <button type="button" onclick="startDictation('Mail')">Voice</button>
+        <br><br>
+        <label>
+            <b>
+                Password
+            </b>
+        </label>
+        <input type="Password" name="Pass" id="Pass" placeholder="Password" minlength="8" required="required">
+        <button type="button" onclick="startDictation('Pass')">Voice</button>
+        <br><br>
+        <input type="submit" name="Login" id="Login" value="Login">
+        <br><br>
+        <input type="checkbox" id="check">
+        <span>Remember me</span>
+
+        <div id="create-account-wrap">
+            <p>Not a member? <a href="../signup.html">Sign up!</a><p>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBa2p_ux3mmCgpBraYM82nuFkJsWAhqBFE",
+            authDomain: "authentication-2244f.firebaseapp.com",
+            databaseURL: "https://authentication-2244f-default-rtdb.firebaseio.com",
+            projectId: "authentication-2244f",
+            storageBucket: "authentication-2244f.appspot.com",
+            messagingSenderId: "1028544729603",
+            appId: "1:1028544729603:web:e4fe131fd5a22163a23436"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);       
+
+        var btn = document.getElementById("Login");
+        
+        btn.addEventListener('click', Login);
+
+
+        function Login() {
+
+            var email = document.getElementById("Mail").value;
+            var password = document.getElementById("Pass").value;
+
+            const auth = getAuth();
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+
+                    const user = userCredential.user;
+                    alert("Logged in successfully");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert("Login failed!");
+
+                });
+
+        }
+
+        const auth = getAuth();
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+
+                var email = user.email;
+                alert("Active user " + email);
+
+            } else {
+                alert("No Active user Found")
+            }
+        })
+
+    </script>
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+</body>
+</html>

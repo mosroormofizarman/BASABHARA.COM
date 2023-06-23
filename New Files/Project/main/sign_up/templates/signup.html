@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign up</title>
+    <link rel="stylesheet" href="{% static 'css/sign_up_styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <h1>Sign up</h1>
+        <div class="signup" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div style="flex: 1; margin-right: 20px;">
+                <label>
+                    <b>User Name:</b>
+                </label>
+                <input type="Text" name="Uname" id="Uname" placeholder="User name" minlength="4" maxlength="6" required="required">
+                <button type="button" onclick="startDictation('Uname')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Email:</b>
+                </label>
+                <input type="Email" name="Mail" id="Mail" placeholder="Email" required="required">
+                <button type="button" onclick="startDictation('Mail')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Password:</b>
+                </label>
+                <input type="Password" name="Pass" id="Pass" placeholder="Password" minlength="8" required="required">
+                <button type="button" onclick="startDictation('Pass')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Gender:</b>
+                </label>
+                <input type="radio" id="Male" name="gender" value="male"> <label type="Gender" for="Male">Male</label>
+                <input type="radio" id="Female" name="gender" value="female"> <label type="Gender" for="Female">Female</label>
+                <br><br>
+            </div>
+            <div style="flex: 1; margin-left: 10px;">
+                <label>
+                    <b>Age:</b>
+                </label>
+                <input type="Number" name="Age" id="Age" placeholder="Age between 20-80" min="20" max="80" required="required">
+                <button type="button" onclick="startDictation('Age')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Address:</b>
+                </label>
+                <input type="Text" name="Address" id="Address" placeholder="Address" maxlength="15" required="required">
+                <button type="button" onclick="startDictation('Address')"><i class="fa fa-microphone"></i></button>
+                <br><br>
+                <label>
+                    <b>Location:</b>
+                </label>
+                <select id="Location" name="Location" required="required">
+                    <option value="">Please select one area</option>
+                    <option value="Uttara">Uttara</option>
+                    <option value="Badda">Badda</option>
+                    <option value="Mirpur">Mirpur</option>
+                    <option value="Dhanmondi">Dhanmondi</option>
+                    <option value="Bashundhara">Bashundhara</option>
+                </select>
+                <br><br>
+                <label>
+
+                </label>
+                <br>
+                <input type="submit" id="signUp">
+            </div>
+        </div>
+        <div id="create-account-wrap">
+            <p>Already have an account?&nbsp;<a style="color: yellow" href="{% url 'login_view' %}">Login</a><p>
+        </div>
+        {% if message %}
+        <script>
+    alert("{{ message }}");
+        </script>
+        {% endif %}
+
+        <!--<script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBa2p_ux3mmCgpBraYM82nuFkJsWAhqBFE",
+            authDomain: "authentication-2244f.firebaseapp.com",
+            databaseURL: "https://authentication-2244f-default-rtdb.firebaseio.com",
+            projectId: "authentication-2244f",
+            storageBucket: "authentication-2244f.appspot.com",
+            messagingSenderId: "1028544729603",
+            appId: "1:1028544729603:web:e4fe131fd5a22163a23436"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import { getDatabase, ref, get, set, child, update, remove }
+            from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+        const db = getDatabase();
+
+        var btn = document.getElementById("signUp");
+        btn.addEventListener('click', InsertData);
+        btn.addEventListener('click', signUp);
+
+        function InsertData() {
+            var username = document.getElementById("Uname").value;
+            var password = document.getElementById("Pass").value;
+            var email = document.getElementById("Mail").value;
+            var age = document.getElementById("Age").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var address = document.getElementById("Address").value;
+            var location = document.getElementById("Location").value;
+
+            set(ref(db, "Registered Users/" + document.getElementById("Uname").value), {
+                UserName: username,
+                Age: age,
+                Gender: gender,
+                Address: address,
+                Location: location
+            })
+                .then(() => {
+
+                    alert("Data Stored Successfully");
+                    window.location.href = "signup.html";
+                })
+                .catch(() => {
+                    alert("Data Stored Unsuccessful" + error);
+                })
+        }
+
+        function signUp() {
+
+            var email = document.getElementById("Mail").value;
+            var password = document.getElementById("Pass").value;
+
+            const auth = getAuth();
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+
+                    const user = userCredential.user;
+                    console.log("User registered successfully:", user);
+                })
+                .catch((error) => {
+
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error("User registration failed:", errorCode, errorMessage);
+
+                });
+
+        }
+
+        const auth = getAuth();
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+
+                var email = user.email;
+                alert("Active user " + email);
+
+            } else {
+                alert("No Active user Found")
+            }
+        })
+
+    </script>
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>-->
+        <script src="{% static 'js/sign_up_script.js' %}"></script>
+    </form>
+</body>
+</html>
